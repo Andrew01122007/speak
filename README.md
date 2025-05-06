@@ -1,0 +1,1 @@
+我自己寫的結合Google TTS的Discord bot，上傳到這裡只是為了方便申請入學
