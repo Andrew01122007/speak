@@ -23,7 +23,6 @@ class Logs:
         self.line2 = f"<t:{int(self.time)}:R> {self.user.mention}讓我用{self.lang}說 : {self.msg}"
 
     def __str__(self):
-        # print(self.line2)
         return self.line2
 
 class HistoryMenuButton(discord.ui.Button['owo']):
@@ -92,20 +91,6 @@ class Speak(Cog_Extensoon):
             name = user.name
         return name
 
-    #     '''with open('nick.json', 'r', encoding='utf8') as jsonfile:
-    #         nick = json.load(jsonfile)
-    #         # print(nick)
-    #     if nick.get(str(user.id)) is None:
-    #         if user.nick:
-    #             name = user.nick
-    #         else:
-    #             name = user.name
-    #             jsonfile.close()
-    #         return name
-    #     else:
-    #         jsonfile.close()
-    #         return nick[str(user.id)]
-    # '''
     def play(self, guild):
         print(self.waiting)
         arg = self.waiting[guild.id][0]
@@ -129,14 +114,6 @@ class Speak(Cog_Extensoon):
             if error is None:
                 if len(self.waiting[guild.id]) > 0:
                     self.play(guild)
-                    # if guild.voice_client.channel.id != self.waiting[guild.id][0][2].id:
-                    #     self.needmove.add(guild)
-                    #     if self.moveowo.is_running():
-                    #         pass
-                    #     else:
-                    #         self.moveowo.start()
-                    # else:
-                    #     self.play(guild)
             else:
                 print("\n\n幹好像出錯了靠邀--------------------------------------------\n\n")
                 print(error)
@@ -150,7 +127,6 @@ class Speak(Cog_Extensoon):
             pass
         else:
             self.leave.start()
-        # ["arg", "time", "ch", "user"]
 
     # @commands.command()
     async def change(self, ctx: commands.Context, *, name):
@@ -372,7 +348,7 @@ class Speak(Cog_Extensoon):
             embed.set_author(name=f'{user}', icon_url=user.avatar)
             embed.add_field(name="內容", value=arg, inline=False)
             embed.set_footer(text=f'{time.astimezone(timezone(timedelta(hours=8)))}  slash:{slash}')
-            channel = self.bot.get_channel(1080868147252432947)
+            channel = self.bot.get_channel(0)
             if self.history.get(ch.guild.id) is None:
                 self.history[ch.guild.id] = [Logs(user, arg, language)]
             else:
@@ -390,7 +366,7 @@ class Speak(Cog_Extensoon):
             embed.set_author(name=f'{user}', icon_url=user.avatar)
             embed.add_field(name="內容", value=arg, inline=False)
             embed.set_footer(text=f'{time.astimezone(timezone(timedelta(hours=8)))}  slash:{slash}')
-            channel = self.bot.get_channel(1080868147252432947)
+            channel = self.bot.get_channel(0)
             if self.history.get(ch.guild.id) is None:
                 self.history[ch.guild.id] = [Logs(user, arg, language)]
             else:
@@ -412,7 +388,7 @@ class Speak(Cog_Extensoon):
             embed.set_author(name=f'{user}', icon_url=user.avatar)
             embed.add_field(name="內容", value=arg, inline=False)
             embed.set_footer(text=f'{time.astimezone(timezone(timedelta(hours=8)))}  slash:{slash}')
-        channel = self.bot.get_channel(1080868147252432947)
+        channel = self.bot.get_channel(0)
         if self.history.get(ch.guild.id) is None:
             self.history[ch.guild.id] = [Logs(user, arg)]
         else:
