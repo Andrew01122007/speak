@@ -72,14 +72,6 @@ async def slash_sync(interaction: discord.Interaction, area: int = 0):
         now_ping.restart()'''
 
 
-'''@bot.event(coro=discord.ext.commands.errors.CommandNotFound)
-async def on_error(event, *args, **kwargs):
-    channel = bot.get_channel(929411406724493322)
-    await channel.send(f'```error name:{event}```\n'
-                       f'```{args}```\n'
-                       f'```{kwargs}```')'''
-
-
 @bot.command()
 async def check(ctx, arg):
     if isinstance(ctx.channel, discord.channel.DMChannel):
